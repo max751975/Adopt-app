@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Edit pet{{ pet.id }}{% endblock %}
+{% block content %}
+<h1 class="display-4 fw-bold text-center">Edit info for {{pet.name}}</h1>
+<form action="" method="POST">
+    {{ form.hidden_tag()}}
+    <div class="mb-3">
+        {{form.name.label (class_="form-control-label")}}
+        {{form.name (class_="form-control")}}
+    </div>
+    <div class="mb-3">
+        {{form.photo_url.label (class_="form-control-label")}}
+        {{form.photo_url (class_="form-control")}}
+    </div>
+    <div class="mb-3 form-check">
+        {{form.available.label (class_="form-check-label")}}
+        {{form.available (class_="form-check-input")}}
+    </div>
+    <div class="mb-3">
+        {{form.notes.label (class_="form-control-label")}}
+        {{form.notes (class_="form-control")}}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-danger" formaction="/pets/{{ pet.id }}/delete" formmethod="POST">Delete pet
+    </button>
+</form>
+{% endblock %}

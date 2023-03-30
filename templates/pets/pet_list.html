@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{%block title %} List of Pets {% endblock %}
+{% block content %}
+<h1 class="display-4 text-center fw-bold">Our pets:</h1>
+<div class="container">
+    <div class="row">
+        {% for pet in pets %}
+        <div class="col-4">
+            <div class="card mt-3">
+                <img src="{{pet.photo_url}}" class="card-img-top" alt="shelter" style="width:250px; height:250px; margin:3px auto; border:1px solid black; border-radius:50%">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h3>
+                            <a href="/pets/{{ pet.id }}" style="text-decoration: none">{{ pet.name}}</a>
+                        </h3>
+                        <span>
+                            {% if pet.available: %}
+                            is available
+                            {% else %}
+                            is on hold
+                            {% endif %}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
